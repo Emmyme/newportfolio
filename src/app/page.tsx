@@ -1,113 +1,233 @@
+"use client";
+
 import Image from "next/image";
+import Clouds from "@/img/clouds.png";
+import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import QuizApp from "@/img/quizapp.png";
+import Plantz from "@/img/plantz.png";
+import DailyPlanner from "@/img/dailyplanner.png";
+import Portfolio from "@/img/portfolio.png";
+import { Card } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Link from "next/link";
+import { ContactForm } from "@/components/contact-form";
+import Logo from "@/img/Namnlöst-1 [återskapat].png";
+import Autoplay from "embla-carousel-autoplay";
+
+const skills: String[] = [
+  "HTML/CSS",
+  "JavaScript",
+  "TypeScript",
+  "Java",
+  "Python",
+  "React.js",
+  "Vue.js",
+  "Node.js/Express.js",
+  "Tailwind CSS",
+  "Bootstrap",
+  "Agile Development",
+  "Figma",
+  "Git",
+  "Responsive Design",
+  "Accessibility",
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <>
+      <main className="flex min-h-screen flex-col items-center overflow-x-hidden">
+        <header className="pt-3 flex sm:pt-10">
+          <nav className="fixed flex gap-8 justify-center z-10 font-display w-full md:gap-20">
+            <Button className="bg-white/95 text-foreground p-3 text-lg rounded-3xl sm:text-2xl sm:p-6">
+              <Link href={"#aboutme"}>About me</Link>
+            </Button>
+            <Button className="bg-white/95 text-foreground p-3 text-lg rounded-3xl sm:text-2xl sm:p-6">
+              <Link href={"#portfolio"}>Portfolio</Link>
+            </Button>
+            <Button className="bg-white/95 text-foreground p-3 text-lg rounded-3xl sm:text-2xl sm:p-6">
+              <Link href={"#contact"}>Contact</Link>
+            </Button>
+          </nav>
+          <div className="bg-background flex justify-center mx-[-50px] pt-6 md:mx-0 md:pt-0">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+              src={Clouds}
+              alt={"clouds"}
+              layout="objectFit"
+              className="animate-bounce object-cover"
+            ></Image>
+          </div>
+        </header>
+        <section className="mt-5 lg:mx-10 lg:mt-20" id="aboutme">
+          <div className="flex flex-row gap-6 justify-center flex-wrap">
+            <Card className="w-full rounded-none md:w-2/3 md:rounded-xl">
+              <h4 className="font-display text-4xl text-center mt-4">
+                About me
+              </h4>
+              <p className="p-4 font-body text-lg">
+                My name is Emelie Berg and I'm a 23 year old web developer with
+                a focus on front-end development.
+              </p>
+            </Card>
+            <Card className="w-full rounded-none md:w-fit md:rounded-xl">
+              <h4 className="font-display text-4xl text-center mt-4">Skills</h4>
+              <ul className="p-4 font-body text-xl justify-center flex flex-wrap gap-8 md:flex-col md:gap-2 md:justify-start">
+                {skills.map((skill) => (
+                  <>
+                    <li>{skill}</li>
+                  </>
+                ))}
+              </ul>
+            </Card>
+          </div>
+        </section>
+        <section className="md:w-3/4 mt-20" id="portfolio">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 3000,
+              }),
+            ]}
+            opts={{ align: "start", loop: true }}
+          >
+            <CarouselContent>
+              <CarouselItem>
+                <Card className="md:p-2 flex flex-col p-0 gap-0 rounded-none md:rounded-xl md:gap-4">
+                  <Image
+                    src={QuizApp}
+                    alt={"quiz app"}
+                    layout="responsive"
+                    className="md:rounded-xl"
+                  ></Image>
+                  <h3 className="text-center text-3xl font-display">
+                    Quiz App
+                  </h3>
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-3/4 flex flex-col self-center"
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Read more</AccordionTrigger>
+                      <AccordionContent>
+                        A quiz app made with Vue.js (Vue Router), HTML and CSS.
+                        The quiz makes API calls to get the questions and
+                        answers. Local storage is used to store the players
+                        name.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </CarouselItem>
+              <CarouselItem>
+                <Card className="md:p-2 flex flex-col p-0 gap-0 rounded-none md:rounded-xl md:gap-4">
+                  <Image
+                    src={Plantz}
+                    alt={"plant store"}
+                    layout="responsive"
+                    className="md:rounded-xl"
+                  ></Image>
+                  <h3 className="text-center text-3xl font-display">Plantz</h3>
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-3/4 flex flex-col self-center"
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Read more</AccordionTrigger>
+                      <AccordionContent>
+                        A mock e-commerce website. It's a fullstack application
+                        made with Next.js. The server was made using SQLite and
+                        the backend was made in Node.js using the Express.js
+                        framework. For the frontend I used React with
+                        TypeScript.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </CarouselItem>
+              <CarouselItem>
+                <Card className="md:p-2 flex flex-col p-0 gap-0 rounded-none md:rounded-xl md:gap-4">
+                  <Image
+                    src={Portfolio}
+                    alt={"old portfolio"}
+                    layout="responsive"
+                    className="md:rounded-xl"
+                  ></Image>
+                  <h3 className="text-center text-3xl font-3xl font-display">
+                    Old Portfolio
+                  </h3>
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-3/4 flex flex-col self-center"
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Read more</AccordionTrigger>
+                      <AccordionContent>
+                        My previous portfoliosite was made with Vue.js (Vue
+                        Router), HTML and CSS. It was designed in Figma and made
+                        responsive using CSS grid and flexbox.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </CarouselItem>
+              <CarouselItem>
+                <Card className="md:p-2 flex flex-col p-0 gap-0 rounded-none md:rounded-xl md:gap-4">
+                  <Image
+                    src={DailyPlanner}
+                    alt={"daily planner"}
+                    layout="responsive"
+                    className="md:rounded-xl"
+                  ></Image>
+                  <h3 className="text-center text-3xl font-display">
+                    Daily Planner
+                  </h3>
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-3/4 flex flex-col self-center"
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Read more</AccordionTrigger>
+                      <AccordionContent>
+                        A daily planner designed in Figma. It was made with
+                        Native JavaScript, HTML and CSS. The planner makes API
+                        calls to tell you the weather in your chosen location.
+                        It also uses local storage to store the to-do list and
+                        your recent moods.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </section>
+
+        <Card id="contact" className="p-4 lg:w-1/3 mt-10">
+          <ContactForm></ContactForm>
+        </Card>
+      </main>
+      <footer className="w-full bg-secondary-background mt-20 p-10">
+        <div className="w-1/4">
+          <Image src={Logo} alt={"logo"} layout="responsive"></Image>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </footer>
+    </>
   );
 }
