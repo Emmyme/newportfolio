@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -33,12 +32,13 @@ export function ContactForm() {
   })
 
   function onSubmit() {
-    console.log('hej')
+    
   }
+
  
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12" action="http://localhost:3000/send_message" method="POST">
+      <form className="space-y-12" action="http://localhost:5000/send_message" method="POST">
         <FormField
           control={form.control}
           name="email"

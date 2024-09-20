@@ -18,6 +18,9 @@ const config: Config = {
 				'display': ['Pain De Mie', 'ui-sans-serif'],
 				'body': ['PF Videotext', 'ui-serif']
 			},
+			backgroundImage: {
+        'clouds': "url('/img/clouds.png')",
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -85,6 +88,8 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+    require('daisyui')
+  ],
 };
 export default config;
