@@ -4,7 +4,7 @@
 import React, { useRef, useEffect, useState } from "react"
 
 import emailjs from '@emailjs/browser';
-import { Half2Icon } from "@radix-ui/react-icons";
+
  
 
 
@@ -18,7 +18,7 @@ export function ContactForm() {
 
   useEffect(() => emailjs.init("Jjxdiu3WLdHGCTIoQ"), []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const serviceId = "service_xdrz84m";
     const templateId = "template_r6w1wii"
