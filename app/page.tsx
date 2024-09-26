@@ -52,7 +52,8 @@ export default function Home() {
           <Buddy />
         </header>
 
-        <section className="mt-5 lg:mx-10 lg:mt-20" id="aboutme">
+
+        <section className="mt-0 lg:mx-10 lg:mt-5" id="aboutme">
           <div className="flex flex-row gap-16 justify-center flex-wrap">
             <Card className="w-full rounded-none lg:w-1/3 lg:rounded-xl flex flex-col pb-2">
               <h4 className="font-display text-4xl text-center mt-4">
