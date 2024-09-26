@@ -1,6 +1,8 @@
 import Spline from '@splinetool/react-spline/next';
 
+
  function Buddy() {
+
   return (
     <div>
       <Spline
