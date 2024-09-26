@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 
 export function ContactForm() {
   const emailRef = useRef<HTMLInputElement>();
-  const messageRef = useRef<HTMLInputElement>();
+  const messageRef = useRef<HTMLTextAreaElement>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => emailjs.init("Jjxdiu3WLdHGCTIoQ"), []);
