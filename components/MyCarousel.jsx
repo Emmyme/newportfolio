@@ -6,7 +6,6 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "./ui/carousel";
 import QuizApp from "../img/quizapp.png";
 import Plantz from "../img/plantz.png";
@@ -23,7 +22,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useState, useEffect } from "react";
 
 export function MyCarousel() {
-  const [api, setApi] = useState<CarouselApi>();
+  const [api, setApi] = useState();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
