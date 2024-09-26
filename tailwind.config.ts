@@ -15,8 +15,8 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
 			fontFamily: {
-				'display': ['Pain De Mie', 'ui-sans-serif'],
-				'body': ['PF Videotext', 'ui-serif']
+				'display': ['pain-de-mie', 'ui-sans-serif'],
+				'body': ['pf-videotext', 'ui-sans-serif']
 			},
 			backgroundImage: {
         'clouds': "url('/img/clouds.png')",
